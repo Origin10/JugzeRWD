@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>CSS練習</title>
+		<link rel="stylesheet" href="stylesheets/main.css" type="text/css" media="screen" title="no title" charset="utf-8"/>
+		<style type="text/css" media="screen">
+		</style>
+		<!-- <script type="text/javascript">//投票功能
+		//投票功能
+		$(document).ready(function() {
+		var a = 500;
+		var b = 130;
+		$("#white").animate({
+		width : 0,
+		left : "250px"
+		}, 1000, function() {
+		$("#vs").fadeIn("slow", function() {
+		$("#all").html(a + b);
+		$("#aa").html(a);
+		$("#bb").html(b);
+		var newLeft = a / (a + b) * 500 - 20 + "px";
+		//20为vs 的一半
+		$("#vs").animate({
+		left : newLeft
+		}, 1000);
+		$("#red").animate({
+		width : newLeft
+		}, 1000);
+		});
+		});
+		});
+		</script> -->
+	</head>
+	<body>
+		<marquee direction="up" scrollamount="2">
+			跑馬燈：這裡放要跑的文字
+			<br />
+			<a href="http://www.wibibi.com/info.php?tid=68">wibibi</a>
+		</marquee>
+
+		<section>
+			<div class="box issue">
+				<div class="box leftContent">
+					<h1></h1>
+				</div>
+				<div class="box rightContent">
+					<h1></h1>
+				</div>
+			</div>
+		</section>
+
+		<section>
+			<div class="box issue">
+				<div class="box leftContent">
+					<h1></h1>
+				</div>
+				<div class="box rightContent">
+					<h1></h1>
+				</div>
+			</div>
+		</section>
+
+		<div id="position">
+
+			<div id="box_bg">
+				<div id="container">
+					<div id="green" class="line"></div>
+					<div id="red" class="line"></div>
+					<div id="white" class="line"></div>
+					<div id="vs"></div>
+				</div>
+			</div>
+
+			<div style="width:440px; margin:0px auto;">
+				<div id="aa2" class="scope">
+					正方<span id="aa"></span>票
+				</div>
+				<div id="bb2" class="scope">
+					反共<span id="bb"></span>票
+				</div>
+				<div id="all2" class="scope">
+					总共<span id="all"></span>票
+				</div>
+			</div>
+
+			<label for="">立場</label>
+			<br />
+			<input type="range" name="textAge" value="" id="" min="0" max="2"/>
+		</div>
+		<section>
+			<div class="box issue">
+				<div class="box leftContent">
+					<h1>TitleL</h1>
+					<form action="#" method="get" accept-charset="utf-8" >
+						<div class="stl1">
+							<label class="label1" for="account1">姓名：</label>
+							<input type="text" name="account1" id="account1" value="guest"/>
+						</div>
+						<div class="stl1">
+							<label class="label1" for="pwd1">密碼：</label>
+							<input type="password" name="pwd1" id="pwd1" />
+						</div>
+						<div class="stl1">
+							<label class="label1" for="memo1">意見：</label>
+							<textarea name="memo1" id="memo1" rows="8" cols="100"></textarea>
+						</div>
+						<p class="sub">
+							<input type="submit" value="Continue &rarr;"/>
+						</p>
+					</form>
+				</div>
+
+				<div class="box rightContent">
+					<h1>TitleR</h1>
+					<form  action="#" method="get" accept-charset="utf-8">
+						<div class="stl1" >
+							<label class="label1" class="ArgumentMemo" for="account2">姓名：</label>
+							<input type="text" name="account2" id="account2"value="guest"/>
+						</div>
+						<div class="stl1">
+							<label class="label1" class="ArgumentMemo" for="pwd2">密碼：</label>
+							<input type="password2" name="pwd2" id="pwd2" />
+						</div>
+						<div class="stl1">
+							<label class="label1" class="ArgumentMemo" for="memo2">意見：</label>
+							<textarea name="memo2" id="memo2" rows="8" cols="100"></textarea>
+						</div>
+						<hr />
+						<div class="stl1">
+							<label class="ArgumentMemo">性別:</label>
+							<input class="label1" type="radio" name="gender" value="male"/>
+							男
+							<input class="label1" type="radio" name="gender" value="female"/>
+							女
+						</div>
+						<br />
+						<div>
+							<label class="ArgumentMemo">興趣:</label>
+							<input class="label1" type="checkbox" name="hobby" value="music" id="hobby"/>
+							音樂
+							<input class="label1" type="checkbox" name="hobby" value="sport" id="hobby"/>
+							運動
+							<input class="label1" type="checkbox" name="hobby" value="reading" id="hobby"/>
+							閱讀
+							<input class="label1" type="checkbox" name="hobby" value="movie" id="hobby"/>
+							電影
+
+						</div>
+						<br />
+						<fieldset>
+							<legend>
+								地址資料 <em>(必填)</em>
+							</legend>
+
+							<select name="LivingIn" multiple="">
+								<option value="TPE">台北</option>
+								<option value="TPH">新北</option>
+								<option value="TYC" selected="">桃園</option>
+								<option value="HSC">新竹</option>
+							</select>
+
+						</fieldset>
+
+						<br />
+
+						<fieldset >
+							<label class="label1">照片:</label>
+							<input type="file" name="file1" id="file1"/>
+
+						</fieldset>
+
+						<p class="sub">
+							<div class="stl1">
+								<input type="submit" value="Continue &rarr;"/>
+							</div>
+
+						</p>
+					</form>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
