@@ -8,22 +8,22 @@ $green2:lightseagreen;
 
 $icon-style:$blue;
 
-body{
-  background-color: $blue;
-  div{
-    background-color: $green2;
-  }
-}
-
-.icon-#{$icon-style}{
-  font: lighten($blue, 6);
-}
-
-body > div {
-  width: 10%;
-  float: left;
-}
-
-body > div > div {
-  height: 50px;
-}
+// body{
+//   background-color: $blue;
+//   div{
+//     background-color: $green2;
+//   }
+// }
+//
+// .icon-#{$icon-style}{
+//   font: lighten($blue, 6);
+// }
+//
+// body > div {
+//   width: 10%;
+//   float: left;
+// }
+//
+// body > div > div {
+//   height: 50px;
+// }

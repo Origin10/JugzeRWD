@@ -1,54 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
 
-  <link rel="stylesheet" href="stylesheets/styles.css">
-</head>
+        <link rel="stylesheet" href="stylesheets/styles.css">
+        <link rel="stylesheet" href="stylesheets/MacDeskStyle.css">
+        <link rel="stylesheet" href="stylesheets/9x9table.css">
 
-<%= livereload_js %>
-<body>
-  <div class="clo-8">
- <%= zh_lorem_paragraph %>
-xzs
- 123
+        <script type="text/javascript">
+            window.onload = function () {
+                closeWin();
+            };
 
- <% @today = capture do %>
-  Today is
-  <%= Time.now.to_date %>
+            function closeWin() {
+                document.getElementById("X").addEventListener("click", function () {
+                    document.getElementsByClassName("windows").style.display = "none";
+                })
+                document.getElementById("M").addEventListener("click", function () {
+                    document.getElementsByClassName("windows").style.display = "none";
+                })
+            }
 
-  <% end %>
+            
+            // function iconToggle(item) {
+            //     var x = document.getElementById('item');
+            //     if (x.style.display === 'none') {
+            //         x.style.display = 'block';
+            //     } else {
+            //         x.style.display = 'none';
+            //     }
+            // }
 
- <%= @today %>
- <%= @today %>
+            function NxNtableCul() {
+                document.write("<table>")
+                for (j = 2; j < 10; j++) {
+                    document.write("<tr>");
+                    for (i = 1; i < 10; i++) {
+                        document.write("<td>\t" + j + "x" + i + " = \t" + j * i + "</td>");
+                    }
+                    document.write("</tr>");
+                }
+                document.write("</table>")
+            }
 
+            function displayNxN() {
+              document.getElementById("NxN").style.display="initial";
+            }
+        </script>
 
-<a href="issue.html"><h1>Hit me.</h1></a>
+    </head>
 
- <div class="container icon-blue">
-     <div class=row>
-         <div class=col-md-4>
-             <h2>Heading <br> <%= @today %></h2>
-             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                 <p><a class="btn btn-default" href=# role=button>View details &raquo;</a></div>
-         <div class=col-md-4>
-             <h2>Heading</h2>
-             <p><img src="<%= lorem_image("640x360") %>" class="img-responsive" alt="Responsive image" /></p>
-             <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-                 <p><a class="btn btn-default" href=# role=button>View details &raquo;</a></div>
-         <div class=col-md-4>
-             <h2>Heading</h2>
-             <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit
-                 amet risus.
-                 <p><a class="btn btn-default" href=# role=button>View details &raquo;</a></div>
-     </div>
+    <%= livereload_js %>
 
- <%= html_escape("st<html>cxscxz>ring") %>
-<%= h("<html>st<cxscxz>ring") %>
+    <body>
 
+        <div class="windows" id="NxN" style="display:none">
+            <div class="splitView">
+                <span id="X" class="slitb">X</span>
+                <span id="M" class="slitb">-</span>
+                <span id="S" class="slitb">/</span>
+            </div>
+
+            <div class="mainpage">
+
+                <script type="text/javascript">
+                    NxNtableCul();
+                </script>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="RegExp_windows" style="display:none">
+        <div class="splitView">
+            <span id="X" class="slitb">X</span>
+            <span id="M" class="slitb">-</span>
+            <span id="S" class="slitb">/</span>
+        </div>
+
+        <div class="mainpage">
+          <script>
+          function chkEmail() {
+
+                  var theEmail = document.getElementById("idEmail").value;
+
+                  var re = new RegExp("^.+@.+\\..{2,3}$");
+
+                  if (re.test(theEmail))
+                      alert("successful");
+                  else
+                      alert("failure");
+              }
+          </script>
+          Email:<input type="text" id="idEmail" />
+          <br />
+          <input type="button" value="checkEmail" onclick="chkEmail();" />
+
+        </div>
+    </div>
 </div>
+
+<!-- Mac desktop -->
+<div id="dock-container">
+    <div id="dock">
+        <ul>
+            <li>
+                <span>回首頁</span>
+                <img src="images\fruiticons_buttons_apple.png" onclick="" />
+            </li>
+            <li>
+                <span>九九乘法表</span>
+                <img src="images\fruiticons_buttons_watermelon.png" onclick="displayNxN()" />
+            </li>
+            <li>
+                <span>表格驗證</span>
+                <img src="images\fruiticons_buttons_pineapple.png" onclick=""/>
+            </li>
+            <li>
+                <span>Windows</span>
+                <img src="images\fruiticons_buttons_orange.png" onclick=""/>
+            </li>
+            <li>
+                <span>Blackberry</span>
+                <img src="images\fruiticons_buttons_strawberry.png"/>
+            </li>
+            <li>
+                <span>Sony Ericsson</span>
+                <img src="images\fruiticons_buttons_grape.png"/>
+            </li>
+        </ul>
+        <div class="base"></div>
+    </div>
+</div>
+
 </body>
 </html>
