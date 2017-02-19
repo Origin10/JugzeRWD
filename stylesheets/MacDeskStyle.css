@@ -126,11 +126,12 @@ img {
 }
 .windows{
     /*display: none;*/
+
     background-image: url("../images/mac_desktop.jpg");
     background-attachment: fixed;
     background-size: cover;
-    background-repeat: no-repeat;
-    index:1;
+    /*background-repeat: no-repeat;*/
+    index:999;
 
 }
 

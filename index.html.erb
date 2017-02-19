@@ -10,21 +10,50 @@
         <link rel="stylesheet" href="stylesheets/MacDeskStyle.css">
         <link rel="stylesheet" href="stylesheets/9x9table.css">
 
+        <style media="screen">
+        .st1 {
+            /*width: 250px;*/
+            border-bottom: 1px solid #e0e0e0;
+            margin: 20px;
+            padding-bottom: 10px;
+        }
+
+        .label1 {
+            /*width: 100px;*/
+            float: left;
+            text-align: right;
+            padding-right: 3px;
+        }
+        section {
+            padding-bottom: 20px;
+            margin-bottom: 1.3%;
+            /*border-bottom: 3px solid #ccc;*/
+        }
+        fieldset {
+            width: 500px;
+            margin: 15px;
+            border: 1px solid #acd6ff;
+            border-radius: 15px;
+        }
+
+        </style>
+
         <script type="text/javascript">
             window.onload = function () {
                 closeWin();
             };
 
             function closeWin() {
-                document.getElementById("X").addEventListener("click", function () {
-                    document.getElementsByClassName("windows").style.display = "none";
+
+                document.getElementById("x").addEventListener("click", function () {
+                    this.style.display='none';
                 })
-                document.getElementById("M").addEventListener("click", function () {
-                    document.getElementsByClassName("windows").style.display = "none";
+                document.getElementById("m").addEventListener("click", function () {
+                    this.style.display = "none";
                 })
             }
 
-            
+
             // function iconToggle(item) {
             //     var x = document.getElementById('item');
             //     if (x.style.display === 'none') {
@@ -51,6 +80,7 @@
             }
         </script>
 
+
     </head>
 
     <%= livereload_js %>
@@ -59,13 +89,13 @@
 
         <div class="windows" id="NxN" style="display:none">
             <div class="splitView">
-                <span id="X" class="slitb">X</span>
-                <span id="M" class="slitb">-</span>
-                <span id="S" class="slitb">/</span>
+                <span id="x" class="slitb">x</span>
+                <span id="m" class="slitb">-</span>
+                <span id="s" class="slitb">/</span>
             </div>
 
             <div class="mainpage">
-
+<h2>九九乘法表</h2>
                 <script type="text/javascript">
                     NxNtableCul();
                 </script>
@@ -74,11 +104,11 @@
         </div>
     </div>
 
-    <div id="RegExp_windows" style="display:none">
+    <div id="RegExp_windows" >
         <div class="splitView">
-            <span id="X" class="slitb">X</span>
-            <span id="M" class="slitb">-</span>
-            <span id="S" class="slitb">/</span>
+            <span id="x" class="slitb">x</span>
+            <span id="m" class="slitb">-</span>
+            <span id="s" class="slitb">/</span>
         </div>
 
         <div class="mainpage">
@@ -94,11 +124,49 @@
                   else
                       alert("failure");
               }
-          </script>
-          Email:<input type="text" id="idEmail" />
-          <br />
-          <input type="button" value="checkEmail" onclick="chkEmail();" />
+              function chkName() {
 
+                      var theName = document.getElementById("account1").value;
+
+                      var re = new RegExp("^[\u4e00-\u9fa5]{2,}$");
+
+                      if (re.test(theName))
+                          document.getElementById("account1").insertAdjacentHtml('afterEnd','<p>successful</p>');
+                      else
+                          document.getElementById("account1").insertAdjacentHtml('AfterEnd','<p>failure</p>');
+                  }
+          </script>
+
+
+          <h2>表格驗證</h2><br>
+
+          <form action="#" method="get" accept-charset="utf-8" >
+						<div class="stl1">
+							<label class="label1" for="account1" onblur="">姓名：</label>
+							<input type="text" name="account1" id="account1" value="guest"/></br>
+              <span>(1.不可以空白，至少兩個字以上，3.必須全部為中文字)</span>
+						</div>
+						<div class="stl1">
+							<label class="label1" for="pwd1">密碼：</label>
+							<input type="password" name="pwd1" id="pwd1" /></br>
+              <span>(1.不可以空白，2.至少6個字包含英文字母、數字、特殊字元〔!@#$%^&*〕)</span>
+						</div>
+						<div class="stl1">
+							<label class="label1" for="memo1">意見：</label>
+							<textarea name="memo1" id="memo1" rows="8" cols="100"></textarea>
+						</div>
+
+
+          Email:<input type="text" id="idEmail" />
+          <input type="button" value="checkEmail" onclick="chkEmail()" />
+
+
+
+
+          <p class="sub">
+            <input type="submit" value="Continue &rarr;" onclick="chkName()" />
+          </p>
+</form>
         </div>
     </div>
 </div>
