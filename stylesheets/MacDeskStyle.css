@@ -13,7 +13,7 @@ body {
     margin: 1em 1em 0;
 }
 
-.slitb{
+.splitb{
   /*border-radius: 10%*/
 }
 #X{
@@ -131,7 +131,7 @@ img {
     background-attachment: fixed;
     background-size: cover;
     /*background-repeat: no-repeat;*/
-    index:999;
+    index:1;
 
 }
 
