@@ -1,3 +1,6 @@
+
+@import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
+
 html {
     height: 100%;
     color: #fff;
@@ -6,14 +9,15 @@ html {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
+
 }
 body {
 
-    font-family: 'Helvetica Neue', Helvetica, arial, sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
     margin: 1em 1em 0;
 }
 
-.splitb{
+.slitb{
   /*border-radius: 10%*/
 }
 #X{
@@ -124,16 +128,6 @@ img {
     -o-transform: scale(1.4);
     margin: 0 1.4em 10px;
 }
-.windows{
-    /*display: none;*/
-
-    background-image: url("../images/mac_desktop.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    /*background-repeat: no-repeat;*/
-    index:1;
-
-}
 
 .mainpage {
 
@@ -142,7 +136,8 @@ img {
     width: auto;
     height: 94vh;
     margin: auto;
-    padding: 9%;
+    padding-bottom: 5%;
+    padding-top: 2%;
     text-align: center;
     box-shadow: 0.3em 0.3em 0.3em 0.3em rgba(50,50,50,0.5);
     border-bottom-left-radius: 15px;
@@ -154,6 +149,7 @@ img {
 .splitView {
   line-height: 2em;
   padding-left: 10px;
+  padding-bottom: 3px;
   background: linear-gradient(to bottom, #DDD, #EEE, #CCC);
     box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(50,50,50,0.5);
     border-top-left-radius: 15px;
