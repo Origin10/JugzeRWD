@@ -1,0 +1,16 @@
+    table {
+        font-size:2em;
+        border:.5em dotted lightgreen;
+        margin:0 auto;
+
+        /*border-collapse:collapse;*/
+    }
+    td {
+        padding-left:1.5%;
+        width:10%;
+        border-right:1px solid lightblue;
+    }
+
+    td:last-child {
+        border-right:none;
+    }
