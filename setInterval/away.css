@@ -1,0 +1,24 @@
+@charset "utf-8";
+/* CSS By Away */
+/* http://www.dfuns.idv.tw */
+
+body{ font:1em/1 "微軟正黑體", "新細明體", "細明體", "標楷體"; background:url(images/bg.jpg) repeat-x;}
+h1, h2, h3, h4, h5, h6, p, div{ margin:0;}
+.hdr{ background:url(images/logo.png); width:461px; height:94px; margin:10px auto; text-indent:-9999px;}
+a{ text-decoration:none;}
+a:hover{ text-decoration:underline;}
+.listReset{ padding:0; margin:0; list-style:none;}
+
+.tabPanel{ width:600px; margin:auto; position:relative; height:200px; overflow:hidden;}
+.tab-content{ width:450px; height:200px; position:absolute; top:0; left:0;}
+.detail{ position:absolute; left:20px; top:0; width:150px; height:190px; background:url(images/detailBG.png); padding:5px;}
+.detail h1 a{ color:#FF0; font-size:.5em;}
+.detail p{ color:#FFF; font-size:.8em; line-height:1.5;}
+.detail ul{ color:#F90; list-style-type:square; padding-left:20px; margin:10px 0 0;}
+.detail ul a{ color:#FC0;  font-size:.8em; line-height:1.5;}
+
+.switch{ width:150px; position:absolute; top:0; right:0px;}
+.switch a{ display:block; line-height:40px; background:url(images/tabBG.jpg); text-indent:1em; color:#666; text-decoration:none; *height:40px;}
+.switch a:hover{ background:#F0F; color:#000; background:url(images/tabBG_over.jpg);}
+
+a.now-tab, a.now-tab:hover{ background:url(images/tabBG_now.png); text-indent:1.5em; color:#FFF; font-weight:bold; margin-left:-20px; border:0;}

@@ -43,7 +43,7 @@
                 var xButts = document.getElementsByClassName("x");
                 var xButtsLen = xButts.length;
 
-                for (var i = 0; i < xButts.length; i++) {
+                for (var i = 0; i < xButtsLen; i++) {
 
                     xButts[i].onclick = function () {
                         this.parentElement.parentElement.style.display = "none";
@@ -53,12 +53,12 @@
 
             function mButts() {
 
-                var xButts = document.getElementsByClassName("m");
-                var xButtsLen = xButts.length;
+                var mButts = document.getElementsByClassName("m");
+                var mButtsLen = mButts.length;
 
-                for (var i = 0; i < xButts.length; i++) {
+                for (var i = 0; i < mButtsLen; i++) {
 
-                    xButts[i].onclick = function () {
+                    mButts[i].onclick = function () {
                         //這裡寫動畫
                         this.parentElement.parentElement.style.display = "none";
                     };
@@ -77,18 +77,40 @@
                 document.write("</table>")
             }
 
-            function goHome() {
-                document.getElementById("RegExp").style.display = "none";
-                document.getElementById("NxN").style.display = "none";
+            function goDesktop() {
+
+                var wins = document.getElementsByClassName("windows");
+                var winsLen = wins.length;
+
+                for (var i = 0; i < winsLen; i++) {
+                    wins[i].style.display = "none";
+                };
+
             }
 
             function displayNxN() {
-                document.getElementById("RegExp").style.display = "none";
-                document.getElementById("NxN").style.display = "initial";
+
+                goDesktop();
+                document.getElementById("NxN").style.display = "inline";
+
             }
             function displayRegExp() {
-                document.getElementById("NxN").style.display = "none";
-                document.getElementById("RegExp").style.display = "initial";
+                goDesktop();
+                document.getElementById("RegExp").style.display = "inline";
+            }
+
+            function displayStarts() {
+                goDesktop();
+                document.getElementById("Starts").style.display = "inline";
+            }
+
+            function displayAd() {
+                goDesktop();
+                document.getElementById("Ad").style.display = "inline";
+            }
+            function displayCalendar() {
+                goDesktop();
+                document.getElementById("Calendar").style.display = "inline";
             }
 
             function iconToggle(item) {
@@ -165,10 +187,10 @@
 <body>
     <div id="connect">
 
-        <div class="load">
+        <!-- <div class="load">
             <div class="light"></div>
             <div class="ball"></div>
-        </div>
+        </div> -->
 
         <div class="windows" id="NxN" style="display:none">
             <div class="splitView">
@@ -193,6 +215,8 @@
             </div>
         </div>
 
+        <!-- RegExp -->
+
         <div class="windows" id="RegExp" style="display:none">
             <div class="splitView">
                 <span class="x slitb">
@@ -215,10 +239,10 @@
                     <legend>
                         <span style="background-color:#FFF;">" Sign In "</span>
                     </legend>
-                    <form action="#" method="post" accept-charset="utf-8">
+                    <form action="#" method="get" accept-charset="utf-8">
                         <div class="stl1">
                             <label class="label1" for="account1">姓名：</label>
-                            <input type="text" name="account1" id="account1"/></br>
+                            <input type="text" id="account1"/></br>
                         <!-- <span>(1.不可以空白，至少兩個字以上，3.必須全部為中文字)</span> -->
                         <span id="sp1"></span>
                     </div>
@@ -243,41 +267,157 @@
             <p class="sub">
                 <input type="button" value="Continue &rarr;" onclick="chkAll()"/>
             </p>
-
         </form>
     </fieldset>
 
 </div>
 </div>
+<!-- Starts  -->
+<div class="windows" id="Starts" style="display:none">
+<div class="splitView">
+    <span class="x slitb">
+        <div class="sl">ｘ</div>
+    </span>
+    <span class="m slitb">
+        <div class="sl">－</div>
+    </span>
+    <span class="s slitb">
+        <div class="sl">／</div>
+    </span>
 </div>
-</div>
 
-<!-- Mac desktop -->
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper {
+        height: 20px;
+        padding: 10px;
+        width: 200px;
+        margin: auto;
+    }
+    a {
 
+        float: left;
+        width: 26px;
+        height: 20px;
+        background: url("star.png") 0 -20px no-repeat;
+    }
+    #dir {
+        font: 24px SimSun;
+        width: 130px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-<div class="windows" id="NxN" style="display:none">
-    <div class="splitView">
-        <span class="x slitb">
-            <div class="sl">ｘ</div>
-        </span>
-        <span class="m slitb">
-            <div class="sl">－</div>
-        </span>
-        <span class="s slitb">
-            <div class="sl">／</div>
-        </span>
+</style>
+
+<div class="mainpage">
+    <h2>星星評分</h2>
+    <div class="wrapper">
+        <a href="javascript:;" title="1顆星，同情你"></a>
+        <a href="javascript:;" title="2顆星，再加油"></a>
+        <a href="javascript:;" title="3顆星，及格囉"></a>
+        <a href="javascript:;" title="4顆星，很不錯"></a>
+        <a href="javascript:;" title="5顆星，太完美"></a>
+
     </div>
+</br></hr>
+<span id="dir"></span>
 
-    <div class="mainpage">
-        <h2>九九乘法表</h2>
+<script src="javascripts/star.js" charset="utf-8"></script>
 
-        <script type="text/javascript">
-            NxNtableCul();
-        </script>
-
-    </div>
 </div>
 
+</div>
+
+<!-- 廣告輪播  -->
+
+<div class="windows" id="Ad" style="display:none">
+<div class="splitView">
+<span class="x slitb">
+    <div class="sl">ｘ</div>
+</span>
+<span class="m slitb">
+    <div class="sl">－</div>
+</span>
+<span class="s slitb">
+    <div class="sl">／</div>
+</span>
+</div>
+
+<div class="mainpage">
+<h2>廣告輪播</h2>
+
+<div class="tab-content" id="con2">
+  <img src="images/Ad/001.jpg" width="450" height="200" alt="Illustrator">
+  <div class="detail">
+    <h1><a href="javascript:;">Illustrator</a></h1>
+    <p>illustrator 是目前平面設計和插畫設計最重要的軟體，本課程有基本圖像繪製範例、印刷排版範例、名片設計範例、酷卡範例、DM排版範例、商業設計範例！上課實際操作每一個範例~現場練習~</p>
+  </div>
+</div>
+<div class="tab-content" id="con3">
+  <img src="images/Ad/002.jpg" width="450" height="200" alt="Dreamweaver">
+  <div class="detail">
+    <h1><a href="javascript:;">Dreamweaver</a></h1>
+    <p>本課程是最基礎的網頁設計入門，使用目前業界網頁設計最專業且最普及的軟體 Dreamweaver。</p>
+  </div>
+</div>
+<div class="tab-content" id="con4">
+  <img src="images/Ad/003.jpg" width="450" height="200" alt="Javascript">
+  <div class="detail">
+    <h1><a href="javascript:;">Javascript</a></h1>
+    <p>本課程是 JavaScript 的入門課程，為美術設計師量身打造的JavaScript程式設計課程，從最基本的指令語法講起，先讓您一步一步打好 JavaScript 的基礎。</p>
+  </div>
+</div>
+<div class="tab-content" id="con5">
+  <img src="images/Ad/004.png" width="450" height="200" alt="CSS">
+  <div class="detail">
+    <h1><a href="javascript:;">CSS</a></h1>
+    <p>徹底改變您對網頁設計的觀念！所有網頁設計師必修的新學分！</p>
+    <ul>
+      <li><a href="javascript:;">CSS語法結構指令</a></li>
+      <li><a href="javascript:;">圖形化區塊的應用</a></li>
+      <li><a href="javascript:;">CSS定位排版</a></li>
+      <li><a href="javascript:;">CSS排版實例應用</a></li>
+    </ul>
+  </div>
+</div>
+<ul class="listReset switch">
+  <li><a href="javascript:;" id="tab1">Photoshop</a></li>
+  <li><a href="javascript:;" id="tab2">Illustrator</a></li>
+  <li><a href="javascript:;" id="tab3">Dreamweaver</a></li>
+  <li><a href="javascript:;" id="tab4">Javascript</a></li>
+  <li><a href="javascript:;" id="tab5">CSS</a></li>
+</ul>
+
+</div>
+</div>
+
+<div class="windows" id="Calendar" style="display:none">
+<div class="splitView">
+<span class="x slitb">
+    <div class="sl">ｘ</div>
+</span>
+<span class="m slitb">
+    <div class="sl">－</div>
+</span>
+<span class="s slitb">
+    <div class="sl">／</div>
+</span>
+</div>
+
+<div class="mainpage">
+<h2>日曆驗證</h2>
+
+<script type="text/javascript"></script>
+
+</div>
+</div>
+
+</div>
+<!--  content -->
 
 <!-- Mac desktop -->
 <div id="dock-container">
@@ -285,33 +425,33 @@
 <ul>
 <li>
     <span>回首頁</span>
-    <img src="images\fruiticons_buttons_apple.png" id="home" onclick="goHome()"/>
+    <img src="images\fruiticons_buttons_apple.png" onclick="goDesktop()"/>
 
     <!-- /onclick="function () { document.querySlectorAll(.windows).style.display='none'; }" -->
 </li>
 <li>
     <span>九九乘法表</span>
-    <img src="images\fruiticons_buttons_watermelon.png" id="d_NxN" onclick="displayNxN()"/>
+    <img src="images\fruiticons_buttons_watermelon.png" onclick="displayNxN()"/>
     <!-- onclick="function () { iconToggle(this.id); }" -->
 
 </li>
 <li>
     <span>註冊帳號</span>
-    <img src="images\fruiticons_buttons_pineapple.png" id="d_RegExp" onclick="displayRegExp()"/>
+    <img src="images\fruiticons_buttons_pineapple.png" onclick="displayRegExp()"/>
     <!-- onclick="function () { iconToggle(this.id); }" -->
 
 </li>
 <li>
-    <span>Windows</span>
-    <img src="images\fruiticons_buttons_orange.png" onclick=""/>
+    <span>星星評分</span>
+    <img src="images\fruiticons_buttons_orange.png" onclick="displayStarts()"/>
 </li>
 <li>
-    <span>Blackberry</span>
-    <img src="images\fruiticons_buttons_strawberry.png"/>
+    <span>廣告輪播</span>
+    <img src="images\fruiticons_buttons_strawberry.png" onclick="displayAd()"/>
 </li>
 <li>
-    <span>Sony Ericsson</span>
-    <img src="images\fruiticons_buttons_grape.png"/>
+    <span>日曆驗證</span>
+    <img src="images\fruiticons_buttons_grape.png" onclick="displayCalendar()"/>
 </li>
 </ul>
 <div class="base"></div>

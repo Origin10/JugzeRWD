@@ -1,6 +1,4 @@
-
 @import url(http://fonts.googleapis.com/earlyaccess/notosanstc.css);
-
 html {
     height: 100%;
     color: #fff;
@@ -9,10 +7,9 @@ html {
     background-attachment: fixed;
     background-size: cover;
     background-repeat: no-repeat;
-
 }
-body {
 
+body {
     font-family: 'Noto Sans TC', sans-serif;
     margin: 1em 1em 0;
 }
@@ -38,11 +35,13 @@ body {
     text-align: right;
     padding-right: 3px;
 }
+
 section {
     padding-bottom: 20px;
     margin-bottom: 1.3%;
     /*border-bottom: 3px solid #ccc;*/
 }
+
 fieldset {
     width: 500px;
     margin: 15px;
@@ -50,56 +49,60 @@ fieldset {
     border-radius: 15px;
 }
 
-.slitb{
+.slitb {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin-top: 2px;
+}
 
-  position: relative;
-  top: 2px;
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: 50%;
-  margin-top: 2px;
+.x {
+    background-color: #fc5753;
+    border: 1px solid #df4744;
+    color: #7e0508;
+}
 
+.m {
+    background-color: #fdc032;
+    border: 1px solid #de9f34;
+    color: #985712;
 }
-.x{
-  background-color: #fc5753;
-  border: 1px solid #df4744;
-  color:#7e0508;
+
+.s {
+    background-color: #27aa35;
+    border: 1px solid #27aa35 color:#0b650d;
 }
-.m{
-  background-color: #fdc032;
-  border: 1px solid #de9f34;
-  color:#985712;
+
+.sl {
+    text-align: center;
+    line-height: 1em;
+    font-weight: bold;
 }
-.s{
-  background-color: #27aa35;
-  border: 1px solid #27aa35
-  color:#0b650d;
-}
-.sl{
-  text-align:center;
-  line-height:1em;
-  font-weight: bold;
-}
+
 h1 {
-    text-shadow: rgba(255,255,255, .7) 0 0 10px;
+    text-shadow: rgba(255, 255, 255, .7) 0 0 10px;
     font-size: 2em;
 }
+
 img {
     border: 0;
 }
 
-#tips{
-
-  animation:mymy 2s linear;
+#tips {
+    animation: mymy 2s linear;
 }
 
-
-@keyframes mymy{
-	0%{ background-color: rgba(39,170,53,0.1);}
-	100%{background-color: rgba(39,170,53,0.3);}
+@keyframes mymy {
+    0% {
+        background-color: rgba(39, 170, 53, 0.1);
+    }
+    100% {
+        background-color: rgba(39, 170, 53, 0.3);
+    }
 }
-
 
 #dock-container {
     position: fixed;
@@ -107,12 +110,14 @@ img {
     text-align: center;
     width: 100%;
 }
+
 #dock {
     position: relative;
     display: inline-block;
     -webkit-perspective: 400;
     -moz-perspective: 400;
 }
+
 #dock .base {
     position: absolute;
     bottom: 0;
@@ -136,24 +141,27 @@ img {
     -o-transform: rotateX(55deg);
     /* not supported on current 10.6 */
 }
+
 #dock ul {
     font-size: 14px;
     padding: 0 30px;
     margin: 0;
 }
+
 #dock li {
     list-style-type: none;
     display: inline-block;
     position: relative;
 }
+
 #dock li span {
-  color: white;
+    color: white;
     display: none;
     position: absolute;
     bottom: 140px;
     left: 0;
     width: 100%;
-    background-color: rgba(0,0,0,.75);
+    background-color: rgba(0, 0, 0, .75);
     padding: 4px 0;
     border-radius: 12px;
     /* webkit nightly */
@@ -161,15 +169,17 @@ img {
     /* for safari */
     -moz-border-radius: 12px;
 }
+
 #dock li:hover span {
     display: block;
 }
+
 #dock li img {
     width: 64px;
     height: 64px;
     margin-bottom: 10px;
-    -webkit-box-reflect: below 2px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255,255,255,.5)));
-    -webkit-box-reflect: below 2px -webkit-linear-gradient(top, transparent, rgba(255,255,255,.3));
+    -webkit-box-reflect: below 2px -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(0.7, transparent), to(rgba(255, 255, 255, .5)));
+    -webkit-box-reflect: below 2px -webkit-linear-gradient(top, transparent, rgba(255, 255, 255, .3));
     -webkit-transition: all 0.3s;
     -webkit-transform-origin: 50% 100%;
     -moz-transition: all 0.4s;
@@ -177,6 +187,7 @@ img {
     -o-transition: all 0.3s;
     -o-transform-origin: 50% 100%;
 }
+
 #dock li:hover img {
     -webkit-transform: scale(2);
     -moz-transform: scale(2);
@@ -184,9 +195,10 @@ img {
     margin: 0 2em 10px;
 }
 
+
 /* one element after and element before (with JS)*/
-#dock li.prev img,
-#dock li:hover + li img {
+
+#dock li.prev img, #dock li:hover+li img {
     -webkit-transform: scale(1.4);
     -moz-transform: scale(1.4);
     -o-transform: scale(1.4);
@@ -194,7 +206,6 @@ img {
 }
 
 .mainpage {
-
     position: relative;
     background-color: white;
     width: auto;
@@ -203,19 +214,28 @@ img {
     padding-bottom: 5%;
     padding-top: 2%;
     text-align: center;
-    box-shadow: 0.3em 0.3em 0.3em 0.3em rgba(50,50,50,0.5);
+    box-shadow: 0.3em 0.3em 0.3em 0.3em rgba(50, 50, 50, 0.5);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-
-
-
 }
+
 .splitView {
-  line-height: 2em;
-  padding-left: 10px;
-  padding-bottom: 3px;
-  background: linear-gradient(to bottom, #DDD, #EEE, #CCC);
-    box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(50,50,50,0.5);
+    line-height: 2em;
+    padding-left: 10px;
+    padding-bottom: 3px;
+    background: linear-gradient(to bottom, #DDD, #EEE, #CCC);
+    box-shadow: 0.2em 0.2em 0.2em 0.2em rgba(50, 50, 50, 0.5);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+}
+.starts ul img {
+    width: 50px;
+    height: 50px;
+    float: left;
+    background-image: url(images/startD.png);
+    padding-right: 3px;
+}
+.starts ul img.on {
+    background-image: url(images/start.png);
+    cursor:pointer;
 }
