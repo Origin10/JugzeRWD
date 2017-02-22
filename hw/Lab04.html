@@ -1,0 +1,104 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <style>
+        .handle {
+            background-color : gray;
+        }
+        .c div{
+            height:100px;
+            width:100px;
+            float:left;
+            text-align:center;
+            line-height:100px;
+            border:2px solid seagreen;
+        }
+    </style>
+    <script>        //this is a poor approach,to be modified entirely
+        window.onload = function () {
+            c1 = document.querySelectorAll('.c1');
+            for (var i = 0; i < c1.length; i++) {
+                c1[i].onclick = cL;
+                c1[i].className = '';
+            }
+            c2 = document.querySelectorAll('.c2');
+            for (var i = 0; i < c1.length; i++) {
+                c2[i].onmouseover = over;
+                c2[i].onmouseout = out;
+            }
+            c1[0].className = 'handle';
+            t=null;
+            timer = setInterval(next, 2000);
+            document.getElementById('n').onclick = next;
+            document.getElementById('s').onclick = st;
+            document.getElementById('p').onclick = pre;
+        }
+        lk = [["http://www.google.com","1.jpg"],["http://www.kimo.com.tw","2.jpg"],["http://twitter.com","3.png"]];
+        function over() { this.className='h'; }
+        function cL() {
+
+          alert(innerHTML);
+            document.getElementById('h1').href = lk[(parseInt(this.innerHTML) - 1)][0];
+            document.getElementById('i1').src = lk[(parseInt(this.innerHTML) - 1)][1];
+            h();
+        }
+        function st() {
+            if (t === null) {
+                t = clearInterval(timer);
+                this.onmouseout = null;
+                this.onmouseover = null;
+                this.innerHTML = 'start';
+            }
+            else {
+                t = null;
+                timer = setInterval(next, 2000);
+                this.onmouseout = out;
+                this.onmouseover = over;
+                this.innerHTML = 'stop';
+            }
+        }
+        function out() { this.className = ""; }
+        function next() {
+            var s = document.getElementById('i1').src;
+            var cu = parseInt(s.substr(s.length - 5, 1))
+            if (cu == 3) cu = 0;
+            document.getElementById('h1').href = lk[cu][0];
+            document.getElementById('i1').src = lk[cu][1];
+            h();
+        }
+        function pre() {
+            var s = document.getElementById('i1').src;
+            var cu = parseInt(s.substr(s.length - 5, 1))
+            if (cu == 1) cu = 4;
+            document.getElementById('h1').href = lk[cu-2][0];
+            document.getElementById('i1').src = lk[cu - 2][1];
+            h();
+        }
+        function h() {
+            var s = document.getElementById('i1').src;
+            var cu = parseInt(s.substr(s.length - 5, 1))
+            for (var i = 1; i < 4; i++)
+            {
+                if (cu == i) document.getElementById("c"+i).className = 'h';
+                else document.getElementById("c"+i).className = '';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+    <div style="overflow:auto" id="d1">
+         <a id="h1" href="http://www.google.com"><img src="1.jpg" id="i1"/></a>
+    </div>
+    <div style="margin:0 auto;" class="c">
+        <div class="c1" id="c1">1</div>
+        <div class="c1" id="c2">2</div>
+        <div class="c1" id="c3">3</div>
+        <div class="c2" id="p">pre</div>
+        <div class="c2" id="s">stop</div>
+        <div class="c2" id="n">next</div>
+    </div></div>
+</body>
+</html>

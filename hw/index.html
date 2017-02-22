@@ -9,59 +9,63 @@
         <link rel="stylesheet" href="stylesheets/styles.css">
         <link rel="stylesheet" href="stylesheets/MacDeskStyle.css">
         <link rel="stylesheet" href="stylesheets/9x9table.css">
-
-        <style media="screen">
-        .st1 {
-            /*width: 250px;*/
-            border-bottom: 1px solid #e0e0e0;
-            margin: 20px;
-            padding-bottom: 10px;
-        }
-
-        .label1 {
-            /*width: 100px;*/
-            float: left;
-            text-align: right;
-            padding-right: 3px;
-        }
-        section {
-            padding-bottom: 20px;
-            margin-bottom: 1.3%;
-            /*border-bottom: 3px solid #ccc;*/
-        }
-        fieldset {
-            width: 500px;
-            margin: 15px;
-            border: 1px solid #acd6ff;
-            border-radius: 15px;
-        }
-
-        </style>
+        <link rel="stylesheet" href="stylesheets/star.css">
+        <link rel="stylesheet" href="stylesheets/Ad.css">
 
         <script type="text/javascript">
             window.onload = function () {
-                closeWin();
+                xButts();
+                mButts();
+
+                document.getElementById("account1").addEventListener("blur", chkName);
+                document.getElementById("pwd1").addEventListener("blur", chkPwd);
+                document.getElementById("date1").addEventListener("blur", chkDate);
+
+                document.getElementById("account1").addEventListener("focus", tipName);
+                document.getElementById("pwd1").addEventListener("focus", tipPwd);
+                document.getElementById("date1").addEventListener("focus", tipkDate);
+
             };
 
-            function closeWin() {
+            function tipName() {
 
-                document.getElementById("x").addEventListener("click", function () {
-                    this.style.display='none';
-                })
-                document.getElementById("m").addEventListener("click", function () {
-                    this.style.display = "none";
-                })
+                document.getElementById("tips").innerHTML = "<span id='tips'>1.姓名不可以空白，至少兩個字以上，3.必須全部為中文字</span>"
+            }
+            function tipPwd() {
+
+                document.getElementById("tips").innerHTML = "<span id='tips'>1.不可以空白，2.至少6個字包含英文字母、數字、特殊字元〔!@#$%^&*〕</span>"
+            }
+            function tipkDate() {
+
+                document.getElementById("tips").innerHTML = "<span id='tips'>輸入格式(1990/01/01)</span>"
             }
 
+            function xButts() {
 
-            // function iconToggle(item) {
-            //     var x = document.getElementById('item');
-            //     if (x.style.display === 'none') {
-            //         x.style.display = 'block';
-            //     } else {
-            //         x.style.display = 'none';
-            //     }
-            // }
+                var xButts = document.getElementsByClassName("x");
+                var xButtsLen = xButts.length;
+
+                for (var i = 0; i < xButtsLen; i++) {
+
+                    xButts[i].onclick = function () {
+                        this.parentElement.parentElement.style.display = "none";
+                    };
+                };
+            }
+
+            function mButts() {
+
+                var mButts = document.getElementsByClassName("m");
+                var mButtsLen = mButts.length;
+
+                for (var i = 0; i < mButtsLen; i++) {
+
+                    mButts[i].onclick = function () {
+                        //這裡寫動畫
+                        this.parentElement.parentElement.style.display = "none";
+                    };
+                };
+            }
 
             function NxNtableCul() {
                 document.write("<table>")
@@ -75,134 +79,395 @@
                 document.write("</table>")
             }
 
+            function goDesktop() {
+
+                var wins = document.getElementsByClassName("windows");
+                var winsLen = wins.length;
+
+                for (var i = 0; i < winsLen; i++) {
+                    wins[i].style.display = "none";
+                };
+
+            }
+
             function displayNxN() {
-              document.getElementById("NxN").style.display="initial";
+
+                goDesktop();
+                document.getElementById("NxN").style.display = "inline";
+
+            }
+            function displayRegExp() {
+                goDesktop();
+                document.getElementById("RegExp").style.display = "inline";
+            }
+
+            function displayStarts() {
+                goDesktop();
+                document.getElementById("Starts").style.display = "inline";
+            }
+
+            function displayAd() {
+                goDesktop();
+                document.getElementById("Ad").style.display = "inline";
+            }
+            function displayCalendar() {
+                goDesktop();
+                document.getElementById("Calendar").style.display = "inline";
+            }
+
+            function iconToggle(item) {
+                var x = document.getElementById('item');
+                if (x.style.display === 'none') {
+                    x.style.display = 'block';
+                } else {
+                    x.style.display = 'none';
+                }
+            }
+
+            // 表格驗證
+
+            function chkName() {
+                document.getElementById("tips").innerHTML = "<span id='tips'></span>"
+                var theName = document.getElementById("account1").value;
+                var re = new RegExp("^[\u4e00-\u9fa5]{2,}$");
+                if (theName == "Enter your name" || theName == "") {
+                    document.getElementById("sp1").innerHTML = "<img src='../images/error.png' />姓名不得空白";
+                } else if (theName.length < 4) {
+
+                    document.getElementById("sp1").innerHTML = "<img src='../images/error.png' />字數不得小於二";
+                }
+                if (re.test(theName)) {
+                    document.getElementById("sp1").innerHTML = "<img src='../images/ok.png' />正確";
+                } else
+                    document.getElementById("sp1").innerHTML = "<img src='../images/error.png' />請輸入中文字";
+
+                }
+
+            function chkPwd() {
+                document.getElementById("tips").innerHTML = "<span id='tips'></span>"
+                var thePass = document.getElementById("pwd1").value;
+
+                var re = new RegExp("^(?!.*[^\x21-\x7e]){6,}$");
+
+                if (thePass == "") {
+                    document.getElementById('sp2').innerHTML = "<img src='../images/error.png' />密碼不得空白";
+                } else if (re.test(thePass)) {
+                    document.getElementById('sp2').innerHTML = '<img src="../images/ok.png" />正確';
+                } else
+                    document.getElementById('sp2').innerHTML = "<img src='../images/error.png' />密碼不符合格式";
+                }
+
+            function chkDate() {
+                document.getElementById("tips").innerHTML = "<span id='tips'></span>"
+                var date = document.getElementById("date1").value;
+                var dateArray = date.split("/");
+                var year = dateArray[0];
+                month = dateArray[1];
+                day = dateArray[2];
+                var ch = new Date(new Date(date));
+
+                if (date == "") {
+                    document.getElementById("sp3").innerHTML = "<img src='../images/error.png' />日期不得空白";
+                } else if (ch.getFullYear() == year && (ch.getMonth() + 1) == month && ch.getDate() == day) {
+                    document.getElementById("sp3").innerHTML = '<img src="../images/ok.png" />正確';
+                } else
+                    document.getElementById("sp3").innerHTML = '<img src="../images/error.png" />日期不符合格式';
+                }
+
+            function chkAll() {
+                chkName();
+                chkPwd();
+                chkDate();
             }
         </script>
 
-
     </head>
 
-    <!-- <%= livereload_js %> -->
-
     <body>
+        <div id="connect">
 
-        <div class="windows" id="NxN" >
-            <div class="splitView">
-                <span id="x" class="slitb">x</span>
-                <span id="m" class="slitb">-</span>
-                <span id="s" class="slitb">/</span>
+            <!-- <div class="load">
+            <div class="light"></div>
+            <div class="ball"></div>
+        </div> -->
+
+            <div class="windows" id="NxN" style="display:none">
+                <div class="splitView">
+                    <span class="x slitb">
+                        <div class="sl">ｘ</div>
+                    </span>
+                    <span class="m slitb">
+                        <div class="sl">－</div>
+                    </span>
+                    <span class="s slitb">
+                        <div class="sl">／</div>
+                    </span>
+                </div>
+
+                <div class="mainpage">
+                    <h2>九九乘法表</h2>
+
+                    <script type="text/javascript">
+                        NxNtableCul();
+                    </script>
+
+                </div>
             </div>
 
-            <div class="mainpage">
-<h2>九九乘法表</h2>
-                <script type="text/javascript">
-                    NxNtableCul();
-                </script>
+            <!-- RegExp -->
 
-            </div>
-        </div>
-    </div>
+            <div class="windows" id="RegExp" style="display:none">
+                <div class="splitView">
+                    <span class="x slitb">
+                        <div class="sl">ｘ</div>
+                    </span>
+                    <span class="m slitb">
+                        <div class="sl">－</div>
+                    </span>
+                    <span class="s slitb">
+                        <div class="sl">／</div>
+                    </span>
+                </div>
 
-    <div id="RegExp_windows" style="display:none">
-        <div class="splitView">
-            <span id="x" class="slitb">x</span>
-            <span id="m" class="slitb">-</span>
-            <span id="s" class="slitb">/</span>
-        </div>
+                <div class="mainpage">
 
-        <div class="mainpage">
-          <script>
-          function chkEmail() {
+                    <h2>註冊帳號</h2>
+                    <span id="tips"></span>
+                    <br>
+                    <fieldset id="Signin">
+                        <legend>
+                            <span style="background-color:#FFF;">" Sign In "</span>
+                        </legend>
+                        <form action="#" method="get" accept-charset="utf-8">
+                            <div class="stl1">
+                                <label class="label1" for="account1">姓名：</label>
+                                <input type="text" id="account1"/></br>
+                            <!-- <span>(1.不可以空白，至少兩個字以上，3.必須全部為中文字)</span> -->
+                            <span id="sp1"></span>
+                        </div>
+                        <div class="stl1">
+                            <label class="label1" for="pwd1">密碼：</label>
+                            <input type="password" name="pwd1" id="pwd1"/></br>
+                        <!-- <span>(1.不可以空白，2.至少6個字包含英文字母、數字、特殊字元〔!@#$%^&*〕)</span> -->
+                        <span id="sp2"></span>
+                    </div>
+                    <div class="stl1">
+                        <label class="label1" for="date">生日：</label>
+                        <input type="password" name="date1" id="date1"/></br>
+                    <!-- <span>輸入格式(1990/01/01)</span> -->
+                    <span id="sp3"></span>
+                </div>
 
-                  var theEmail = document.getElementById("idEmail").value;
+                <div class="stl1">
+                    <label class="label1" for="memo1">備註：</label>
+                    <textarea name="memo1" id="memo1" rows="7" cols="25" autofocus></textarea>
+                </div>
 
-                  var re = new RegExp("^.+@.+\\..{2,3}$");
+                <p class="sub">
+                    <input type="button" value="Continue &rarr;" onclick="chkAll()"/>
+                </p>
+            </form>
+        </fieldset>
 
-                  if (re.test(theEmail))
-                      alert("successful");
-                  else
-                      alert("failure");
-              }
-              function chkName() {
-
-                      var theName = document.getElementById("account1").value;
-
-                      var re = new RegExp("^[\u4e00-\u9fa5]{2,}$");
-
-                      if (re.test(theName))
-                          document.getElementById("account1").insertAdjacentHtml('afterEnd','<p>successful</p>');
-                      else
-                          document.getElementById("account1").insertAdjacentHtml('AfterEnd','<p>failure</p>');
-                  }
-          </script>
-
-
-          <h2>表格驗證</h2><br>
-
-          <form action="#" method="get" accept-charset="utf-8" >
-						<div class="stl1">
-							<label class="label1" for="account1" onblur="">姓名：</label>
-							<input type="text" name="account1" id="account1" value="guest"/></br>
-              <span>(1.不可以空白，至少兩個字以上，3.必須全部為中文字)</span>
-						</div>
-						<div class="stl1">
-							<label class="label1" for="pwd1">密碼：</label>
-							<input type="password" name="pwd1" id="pwd1" /></br>
-              <span>(1.不可以空白，2.至少6個字包含英文字母、數字、特殊字元〔!@#$%^&*〕)</span>
-						</div>
-						<div class="stl1">
-							<label class="label1" for="memo1">意見：</label>
-							<textarea name="memo1" id="memo1" rows="8" cols="100"></textarea>
-						</div>
-
-
-          Email:<input type="text" id="idEmail" />
-          <input type="button" value="checkEmail" onclick="chkEmail()" />
-
-
-
-
-          <p class="sub">
-            <input type="submit" value="Continue &rarr;" onclick="chkName()" />
-          </p>
-</form>
-        </div>
     </div>
 </div>
+<!-- Starts  -->
+<div class="windows" id="Starts" style="display:none">
+    <div class="splitView">
+        <span class="x slitb">
+            <div class="sl">ｘ</div>
+        </span>
+        <span class="m slitb">
+            <div class="sl">－</div>
+        </span>
+        <span class="s slitb">
+            <div class="sl">／</div>
+        </span>
+    </div>
+
+    <div class="mainpage">
+        <h2>星星評分</h2>
+        <div class="wrapper">
+            <a href="javascript:;" title="1顆星，同情你"></a>
+            <a href="javascript:;" title="2顆星，再加油"></a>
+            <a href="javascript:;" title="3顆星，及格囉"></a>
+            <a href="javascript:;" title="4顆星，很不錯"></a>
+            <a href="javascript:;" title="5顆星，太完美"></a>
+
+        </div>
+    </br>
+</hr>
+<span id="dir"></span>
+
+<script src="javascripts/star.js" charset="utf-8"></script>
+
+</div>
+
+</div>
+
+<!-- 廣告輪播  -->
+
+
+
+<!-- Calendar -->
+
+<div class="windows" id="Calendar" style="display:none">
+<div class="splitView">
+<span class="x slitb">
+    <div class="sl">ｘ</div>
+</span>
+<span class="m slitb">
+    <div class="sl">－</div>
+</span>
+<span class="s slitb">
+    <div class="sl">／</div>
+</span>
+</div>
+
+<div class="mainpage">
+<h2>日曆驗證</h2>
+
+<script type="text/javascript">
+    window.onload = function () {
+        setDate(2010, 2020, "selY");
+        setDate(1, 12, "selM");
+        setDate(1, 31, "selD");
+        var date;
+
+        document.getElementById("selM").addEventListener("change", function () {
+            var y = document.getElementById("selY").value;
+            var m = document.getElementById("selM").value;
+            var d = document.getElementById("selD").value;
+            document.getElementById("selD").length = 0;
+            if (m == 2) {
+                if (y % 400 == 0 || (y % 4 == 0 && y % 100 != 0)) {
+                    //閏年閏月
+                    setDate(1, 29, "selD");
+                } else {
+                    //document.getElementById("selD").length = 0;
+                    setDate(1, 28, "selD");
+                }
+            } else if (m == 4 || m == 6 || m == 9 || m == 11) {
+                //document.getElementById("selD").length = 0;
+                setDate(1, 30, "selD");
+            } else {
+                //document.getElementById("selD").length = 0;
+                setDate(1, 31, "selD");
+            }
+        });
+    }
+
+    function innerDate() {
+
+        y = document.getElementById("selY").value;
+        m = document.getElementById("selM").value;
+        d = document.getElementById("selD").value;
+        date = "您選擇的日期是 " + y + "年" + m + "月" + d + "日";
+        document.getElementById("info").innerHTML = date;
+    }
+
+    function setDate(begin, end, unit) {
+        for (var i = begin; i <= end; i++) {
+            var o = document.createElement("OPTION");
+            var v = document.createTextNode(i);
+            o.appendChild(v);
+            document.getElementById(unit).appendChild(o);
+        }
+    }
+</script>
+
+<style>
+
+    #info {
+        border: 1px solid black;
+        height: 300px;
+        width: 400px;
+        line-height: 3em;
+        padding-left: 15px;
+        margin: 0 auto;
+        display: inline-block;
+    }
+
+    article {
+        width: 50%;
+        float: left;
+    }
+
+    aside {
+        width: 50%;
+        float: right;
+
+    }
+
+</style>
+
+<article>
+
+    <select id="selY" onchange="innerDate()"></select>年
+    <select id="selM" onchange="innerDate()"></select>月
+    <select id="selD" onchange="innerDate()"></select>日
+
+</article>
+
+<aside>
+    <div>
+        <h3>Information</h3>
+        <p id="info"></p>
+    </div>
+</aside>
+
+</div>
+</div>
+
+</div>
+<!--  content -->
 
 <!-- Mac desktop -->
 <div id="dock-container">
-    <div id="dock">
-        <ul>
-            <li>
-                <span>回首頁</span>
-                <img src="images\fruiticons_buttons_apple.png" onclick="" />
-            </li>
-            <li>
-                <span>九九乘法表</span>
-                <img src="images\fruiticons_buttons_watermelon.png" onclick="displayNxN()" />
-            </li>
-            <li>
-                <span>表格驗證</span>
-                <img src="images\fruiticons_buttons_pineapple.png" onclick=""/>
-            </li>
-            <li>
-                <span>Windows</span>
-                <img src="images\fruiticons_buttons_orange.png" onclick=""/>
-            </li>
-            <li>
-                <span>Blackberry</span>
-                <img src="images\fruiticons_buttons_strawberry.png"/>
-            </li>
-            <li>
-                <span>Sony Ericsson</span>
-                <img src="images\fruiticons_buttons_grape.png"/>
-            </li>
-        </ul>
-        <div class="base"></div>
-    </div>
+<div id="dock">
+<ul>
+<li>
+    <span>回首頁</span>
+    <img src="images\fruiticons_buttons_apple.png" onclick="goDesktop()"/>
+
+    <!-- /onclick="function () { document.querySlectorAll(.windows).style.display='none'; }" -->
+</li>
+<li>
+    <span>九九乘法表</span>
+    <img src="images\fruiticons_buttons_watermelon.png" onclick="displayNxN()"/>
+    <!-- onclick="function () { iconToggle(this.id); }" -->
+
+</li>
+<li>
+    <span>註冊帳號</span>
+    <img src="images\fruiticons_buttons_pineapple.png" onclick="displayRegExp()"/>
+    <!-- onclick="function () { iconToggle(this.id); }" -->
+
+</li>
+<li>
+    <span>星星評分</span>
+    <img src="images\fruiticons_buttons_orange.png" onclick="displayStarts()"/>
+</li>
+<li>
+    <span>廣告輪播</span>
+    <img src="images\fruiticons_buttons_strawberry.png" onclick="displayAd()"/>
+</li>
+<li>
+    <span>日曆驗證</span>
+    <img src="images\fruiticons_buttons_grape.png" onclick="displayCalendar()"/>
+</li>
+</ul>
+<div class="base"></div>
 </div>
+</div>
+<!-- Mac desktop -->
+
+</div>
+<!--connect -->
+
+<audio autoplay>
+<source src="..\audio\macOpen.mp3" type="audio/mpeg">
+</audio>
 
 </body>
 </html>
